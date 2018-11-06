@@ -16,4 +16,14 @@ class Singleton{
     }
 }
 //------------------------------------------------
-$s = new Singleton;
+//$s = new Singleton; // Erreur, normal car la fonction __construct() est en privé !!
+
+$objet1 = Singleton::getInstance();
+var_dump($objet1);
+echo '<hr>';
+$objet2 = Singleton::getInstance();
+$objet2->numero = 10;
+var_dump($objet2);
+echo '<hr>';
+$objet3 = Singleton::getInstance();
+var_dump($objet3); 
