@@ -87,4 +87,21 @@ while($contenu=$resultat->fetch()){
     echo "</div>";
     echo "<hr>";
 }
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo "<h1>SELECT + Query() +fetchAll() et PDO::FETCH_ASSOC</h1>";
 
+$r = $pdo->query('SELECT * FROM employes');
+
+$donnees = $r->fetchAll(PDO::FETCH_ASSOC); //fetchALL() retourne toutes les lignes de résultats dans un tableau multidimentionnel (sans faire de boucle)
+
+/* print '<pre>';
+print_r($donnees);
+print '</pre>'; */
+
+foreach($donnees as $indice => $contenu){
+    echo '<div>';
+        foreach($contenu as $indice2 => $contenu2){
+            echo "$indice2 : $contenu2 <br>";
+        }
+    echo '</div>';
+}

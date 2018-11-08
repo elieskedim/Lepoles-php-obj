@@ -1,0 +1,25 @@
+Arboresence:
+    -app/ : la configuration de l'application et autres ressources générales (templates, fichiers traduction)
+    - src/ : le code PHP spécifique au projet
+    - vendor/ : les classes et/ou les bibliothèque extérieures, la récupération des enités
+    -web/ : le repertoire Web racine (point d'entrée sur le site)
+--------------------------------------------------------------------------------------------------
+
+app/
+    Config/
+        parameters.php : contient les paramètre de connexion à la bdd
+        Config.php : Ce fichier représente la configuration, il contient nottament l'inclusion des paramètres de la BDD (parameters.php) et le return de la partie 'connect' dans une methode (getter)
+
+vendor/
+        autoload.php : permet d'inclure les bons fichiers lors d'un "new"
+            le nom du namespace est identique au nom d'un dossier cela permet à l'autoload de s'orienter correctement à travers l'Arboresence mis en place
+            Une condition qui permet d'aller dans le repertoire /src/ et une autres vers le repertoire /vendor/ en foncyion de ce qui est demande
+
+        Controller/
+            controler.php : Controller général de l'application permet d'appeler des reporsitory et contient nottament la methode render() qui affiche un rendu à l'ecran, de manière générique.
+
+        Manager/
+            PDOManager.php : Cette classe représente la connexion à la BDD. Elle contient un objet PDO dans l'une de ces propriété.
+            
+            Entityrepository.php : Contient et peut exécuter toutes les requêtes SQL sans connaitre le contexte.
+                                   Cette classdoit rester générique afin que cela soit réutilisable. 
