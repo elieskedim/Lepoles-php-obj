@@ -1,0 +1,34 @@
+Arborescence :
+    - app/ : le configuration de l'application et autres ressources générales (template, fichiers traduction)
+    - src/ : le code PHP spécifique au projet
+    - vendor/ : les class et/ ou les bibliothèques extérieures, la récupération des entités
+    - web/ : le repertoire Web racine (point d'entrée sur le site)
+
+// -------------------------------------------------------------------------------------------------------------
+
+Nature des différents ficheirs :
+    app/
+        Config/
+            parameters.php : contient les paramètres de connexion à la bdd
+        Config.php : Ce fichier représente la configuration, il contient notamment l'inclusion des paramètres de la BDD (parameters.php) et le return de la partie 'connect' dans une méthode (getter)
+
+    vendor/
+        autoload.php : permet d'inclure les bons fichiers lors d'un "new"
+            Le nom du namespace est identique au nom du dossier, cela permet à l'autoload de s'orienter correctement à travers l'arborescence mise en place.
+            Une condition qui permet d'aller dans le repertoire /src/ et vers le repertoire /vendor/ en fonction de ce qui est demandé.
+
+    Controller/
+        Controller.php : Controller générale de l'application. Permet d'appeler des repository et contient notamment la méthode render() qui affiche un rendu à l'écran, de manière générique
+    
+    Manager/
+        PDOManager.php : Cette class représente la connexion à la BDD. Elle contient un objet PDO dans l'une de ses propriétés.
+        EntityRepository.php : Contient et peut exécuter toutes les requêtes SQL sans connaître le contexte. Cette class doit rester générique afin que cela puisse être ré-utilisable.
+
+    Entity/
+        Employe.php : contient les mêmes propriétés que les champs de la table SQL (avec getter et setter). En PHP, 1 ligne est récupérée de la BDD et représente 1 objet avec les propriétés renseignées. Il est donc important que l'orthographe des colonnes/ champs SQL correspondent au nom des propriétés de l'objet.
+
+    Repository/
+        EmployeRepository.php : Cette class joue le rôle de 'passerelle' pour l'exécution de requête SQL. Elle contient les besoins de Employe (contexte) et demande l'exécution à EntityRepository (générique) via un héritage.
+
+web/
+    index.php : point d'entrée du site
