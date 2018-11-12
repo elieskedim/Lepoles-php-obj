@@ -22,12 +22,30 @@ require_once(__DIR__ . '/../vendor/Autoload.php');
 	// var_dump($pdom);
 
 //test 3:--------------------------------------------
-	$er = new Manager\EntityRepository;
+	/* $er = new Manager\EntityRepository;
 
 	var_dump($er);
 
 	$result = $er->findAll();
-	var_dump($result);
+	var_dump($result); */
+//test 4: --------------------------------------------
+	/* $employeR = new Repository\EmployeRepository;
+
+	var_dump($employeR);
+
+	$resultat = $employeR ->getAllEmploye();
+	echo '<pre>';
+	print_r($resultat);
+	echo '</pre>'; */
+//test 5: --------------------------------------------
+
+	$c = new Controller\Controller;
+
+	$resultat = $c->getRepository('employe');
+	echo '<pre>';
+	var_dump($resultat);
+	echo '</pre>'; 
+	
 
 
 
