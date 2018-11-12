@@ -5,5 +5,5 @@
     <user>root</user>
     <password></password>
     <db>entreprise_pole_s</db>
-    <table>employe</table>
+    <table>employes</table>
 </comfig>
