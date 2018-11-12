@@ -1,5 +1,4 @@
 <?php
-
 namespace model;
 
 class EntityRepository{
@@ -15,7 +14,7 @@ class EntityRepository{
                 $this->table = $xml->table;
 
                 try{
-                    $this->db = new \PDO("mysql:dbname" . $xml->db . ";host=" . $xml->host, $xml->user, $xml->password, array(\PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION));
+                    $this->db = new \PDO("mysql:dbname=" . $xml->db . ";host=" . $xml->host, $xml->user, $xml->password, array(\PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION));
                 }catch(\PDOException $e){
                     die("Proble de connexion bdd : " . $e->getMessage());
                 }
