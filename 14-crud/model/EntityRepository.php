@@ -20,7 +20,7 @@ class EntityRepository{
                     die("Proble de connexion bdd : " . $e->getMessage());
                 }
             }catch(Exception $e){
-                die("Problzeme de fichier config xml")
+                die("Problzeme de fichier config xml");
             }
         }
         return $this->db;
@@ -28,36 +28,35 @@ class EntityRepository{
 //----------------------------------------------------------------------------
 
     public function selectAll(){
-        $q = $this->getDb()->query('SELECT * FROM' . $this->table);
+        $q = $this->getDb()->query('SELECT * FROM ' . $this->table);
 
-        $r = $q->fetchAll(\PDO::FETCH_OBJ){
+        $r = $q->fetchAll(\PDO::FETCH_OBJ);
             if(!$r){
                 return false;
             }else{
                 return $r;
             }
-        }
     }
 //----------------------------------------------------------------------------
     public function select($id){
-        $q = $this->getDb()->query('SELECT * FROM' . $this->table . ' WHERE id_' . $this->table . ' = ' . (int) $id);
+        $q = $this->getDb()->query('SELECT * FROM ' . $this->table . ' WHERE id_' . $this->table . ' = ' . (int) $id);
 
-        $r = $q->fetch(\PDO::FETCH_OBJ){
+        $r = $q->fetch(\PDO::FETCH_OBJ);
             if(!$r){
                 return false;
             }else{
                 return $r;
             }
-        }
+
     }
 //----------------------------------------------------------------------------
     public function delete($id){
-        $q = $this->getDb()->query('DELETE FROM' . $this->table . ' WHERE id_' . $this->table . ' = ' . (int) $id):
+        $q = $this->getDb()->query('DELETE FROM ' . $this->table . ' WHERE id_' . $this->table . ' = ' . (int) $id);
     }
 //----------------------------------------------------------------------------
     public function insert(){
 
-        $q = $this->getDb()->query('INSERT INTO' . $this->table . '(' . implode(',', array_keys($_POST)) . ') VALUES(' . "'" . implode("','", $_POST) . "'" . ')' );
+        $q = $this->getDb()->query('INSERT INTO ' . $this->table . '(' . implode(',', array_keys($_POST)) . ') VALUES(' . "'" . implode("','", $_POST) . "'" . ')' );
 
         return $this->getDb()->lastInsertId();
     }

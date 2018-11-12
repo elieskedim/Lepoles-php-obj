@@ -5,14 +5,14 @@ class Autoload{
     public static function className($className){
         $tab = explode('\\', $className);
 
-        if($tab[0] == Backoffice){
-            $path = __DIR__ .'/../src' . implode('/', $tab) .'.php';
+        if($tab[0] == 'Backoffice'){
+            $path = __DIR__ .'/../src' . implode('/', $tab) . '.php';
         }else{
-            $path = __DIR__ .'/../src' . implode('/', $tab) .'.php';
+            $path = __DIR__ .'/' . implode('/', $tab) .'.php';
         }
         require $path;
         self::$nb++;
     }
 
-    spl_autoload_register(array('Autoload', 'className'));
 }
+spl_autoload_register(array('Autoload', 'className'));
